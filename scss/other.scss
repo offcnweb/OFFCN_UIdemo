@@ -9,7 +9,7 @@
 }
 .offcn_tabchange{
 	&>div{display:none;}
-	&>div:nth-child(2){display:block;}
+	&>div:nth-child(1){display:block;}
 	background:#fff;
 	padding:20px 40px;
 }
