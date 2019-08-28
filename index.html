@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 引入样式 -->
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/other.css">
+</head>
+<body>
+	<div id="app">
+	  	<el-container>
+		  	<el-aside width="220px">
+				<el-menu
+				      default-active="0"
+				      class="el-menu-vertical-demo"
+				      background-color="#303133"
+				      text-color="#fff"
+				      @select="selected"
+				      active-text-color="#67C23A">
+				    <el-menu-item index="0">
+				        <i class="el-icon-menu"></i>
+				        <span slot="title">初始说明</span>
+				    </el-menu-item>
+				    <el-menu-item index="1">
+				        <i class="el-icon-document"></i>
+				        <span slot="title">字号字体,基本参数说明</span>
+				    </el-menu-item>
+				    <el-menu-item index="2">
+				        <i class="el-icon-setting"></i>
+				        <span slot="title">按钮参数</span>
+				    </el-menu-item>
+			    </el-menu>
+		  	</el-aside>
+		  	<el-container>
+		  		<el-header style=" padding:0;"><h1 class="offcn_headtitle"><b>OFFCN</b>系统通用样式参考库</h1></el-header>
+		  		<el-main>
+		  			<div class="offcn_headtab" v-if="activeindex==='2'">
+				        <el-tabs v-model="listStatus">
+				            <el-tab-pane label="导航一" name="0"></el-tab-pane>
+				            <el-tab-pane label="导航二" name="1"></el-tab-pane>
+				            <el-tab-pane label="导航三" name="2"></el-tab-pane>
+				        </el-tabs>
+				    </div>
+			  		<div class="offcn_tabchange clearfix" id="offcn_box">
+			  			<!--==初始说明==-->
+						<el-col :span="24">
+							<ul class="offcn_fontexample">
+								<li>1.所有的类名前缀都是带"offcn_"</li>
+								<li>2.引入的覆盖样式的顺序必须在element的css文件后面</li>
+								<li>3.使用时直接粘贴类名即可使用</li>
+								<li>4.目前使用的是element的2.11.0版本</li>
+								<li>5.直接在index.html中引入index.css</li>
+							</ul>	
+						</el-col>
+						<!--==字号字体,基本参数说明==-->
+						<el-col :span="24">
+							<ul class="offcn_fontexample">
+								<li>1.默认字体是"Microsoft YaHei"，字号是13px，行高24px，颜色是333</li>
+								<li>2.自定义字体样式请按照如下操作：</li>
+								<li>定义类名后使用@include引入size(params0,params1,params2)</li>
+								<li>params0:字号，params1:行高，params2:颜色。如下图所示：</li>
+								<li><img src="images/offcn_pic01.png" alt="" width="500px"></li>
+							</ul>	
+						</el-col>
+						<el-col :span="24">
+							<ul class="offcn_fontexample">
+								<li>1.默认字体是"Microsoft YaHei"，字号是13px，行高24px，颜色是333</li>
+								<li>2.自定义字体样式请按照如下操作：</li>
+								<li>定义类名后使用@include引入size(params0,params1,params2)</li>
+								<li>params0:字号，params1:行高，params2:颜色。如下图所示：</li>
+								<li><img src="images/offcn_pic01.png" alt="" width="500px"></li>
+							</ul>	
+						</el-col>
+			  		</div>
+			  	</el-main>
+		  	</el-container>
+	 	</el-container>
+	</div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return {
+			listStatus:"0",
+			activeindex:""
+         }
+      },
+      mounted () {
+
+      },
+      methods :{
+      	selected(index){
+      		const Boxlist = document.querySelectorAll("#offcn_box>div");
+      		Boxlist.forEach((item)=>{
+      			item.style.display="none";
+      		});
+      		this.activeindex = index
+			Boxlist[index].style.display="block"
+      	}
+      }
+    })
+  </script>
+</body>
+</html>

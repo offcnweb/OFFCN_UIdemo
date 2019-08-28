@@ -1,0 +1,20 @@
+@charset "utf-8";
+@mixin inlineblock{display:inline-block;*display:inline; zoom:1;}
+//字体字号
+@mixin size($fontsize,$lineheight,$color){
+	
+  font-size:$fontsize;line-height:$lineheight;color:$color;
+}
+//背景图
+@mixin back($url ,$left ,$top){
+  background-image: url($url); background-repeat: no-repeat;background-position:$left $top;
+}
+//transform上下左右居中
+@mixin ctt{ position: absolute; top: 50%; left: 50%;transform: translate(-50%, -50%);}
+//定位上下左右居中
+@mixin ctp($width, $height) {position: absolute;top: 50%;left: 50%; margin-top: -$height/2; margin-left: -$width/2;}
+//定位上下居中
+@mixin ctt {position: absolute; top: 50%; transform: translateY(-50%);}
+//定位左右居中
+@mixin lr {position: absolute;left: 50%; transform: translateX(-50%);
+}
