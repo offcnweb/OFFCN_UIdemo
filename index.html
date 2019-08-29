@@ -35,17 +35,33 @@
 				        <i class="el-icon-setting"></i>
 				        <span slot="title">搜索栏布局</span>
 				    </el-menu-item>
+				    <el-menu-item index="4">
+				        <i class="el-icon-setting"></i>
+				        <span slot="title">tab导航栏</span>
+				    </el-menu-item>
+				    <el-menu-item index="5">
+				        <i class="el-icon-setting"></i>
+				        <span slot="title">tab切换栏</span>
+				    </el-menu-item>
 			    </el-menu>
 		  	</el-aside>
 		  	<el-container>
 		  		<el-header style=" padding:0;"><h1 class="offcn_headtitle"><b>OFFCN</b>系统通用样式参考库</h1></el-header>
 		  		<el-main>
-		  			<div class="offcn_headtab" v-if="activeindex==='2'">
+		  			<div class="offcn_headtab" v-if="activeindex==='4'">
 				        <el-tabs v-model="listStatus">
 				            <el-tab-pane label="导航一" name="0"></el-tab-pane>
 				            <el-tab-pane label="导航二" name="1"></el-tab-pane>
 				            <el-tab-pane label="导航三" name="2"></el-tab-pane>
 				        </el-tabs>
+				    </div>
+				    <div class="mb20" v-if="activeindex==='5'">
+				    	 <el-radio-group v-model="radio1">
+					      <el-radio-button label="上海"></el-radio-button>
+					      <el-radio-button label="北京"></el-radio-button>
+					      <el-radio-button label="广州"></el-radio-button>
+					      <el-radio-button label="深圳"></el-radio-button>
+					    </el-radio-group>
 				    </div>
 			  		<div class="offcn_tabchange clearfix" id="offcn_box">
 			  			<!--==初始说明==-->
@@ -62,11 +78,7 @@
 						<el-col :span="24">
 							<ul class="offcn_fontexample">
 								<li><strong>1.默认字体是"Microsoft YaHei"，字号是13px，行高24px，颜色是333</strong></li>
-								<li><strong>2.自定义字体样式请按照如下操作：</strong></li>
-								<li>定义类名后使用@include引入size(params0,params1,params2)</li>
-								<li>params0:字号，params1:行高，params2:颜色。如下图所示：</li>
-								<li><img src="images/offcn_pic01.png" alt="" width="500px"></li>
-								<li><strong>3.基础类</strong></li>
+								<li><strong>2.基础类</strong></li>
 								<li>a.单行文本省略号(offcn_ellipsis)</li>
 								<li class="offcn_ellipsis">
 									测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的测试省略号用的
@@ -78,7 +90,7 @@
 								<li>c.清浮动</li>
 								<li>clearfix,clearDiv</li>
 								<li>d.设置浮动</li>
-								<li>fl(左浮动)，fr(右浮动)</li>
+								<li>左浮动(fl)，右浮动(fr)</li>
 								<li>e.各种高频率间距参数</li>
 								<li><img src="images/offcn_pic02.png" alt="" width="500px"></li>
 								<li>f.字体对齐</li>
@@ -166,6 +178,48 @@
 					                </el-col>
 					            </el-col>
 					        </el-row>
+					        <el-input type="textarea" v-model="onestep" class="mt20 mb20" rows="8"></el-input>
+					        <h2 class="mb10 mt10">2.布局二</h2>
+					        <el-row >
+					            <el-col :lg="5" :sm="11" class="offcn_operation" :offset="1">
+					                    <el-input clearable placeholder ="班级编码"></el-input>
+					            </el-col>
+					            <el-col :lg="5" :sm="11" class="offcn_operation" :offset="1">
+					                    <el-input clearable placeholder ="班级名称"></el-input>
+					            </el-col>
+					            <el-col :lg="5" :sm="11" class="offcn_operation" :offset="1">
+				                    <el-select placeholder="考试类型" popper-class="search-select" clearable="true" filterable="true">
+				                        <el-option></el-option>
+				                    </el-select>
+					            </el-col>
+					            <el-col :lg="5" :sm="11" class="offcn_operation" :offset="1">
+				                    <el-select placeholder="考试类型" popper-class="search-select" clearable="true" filterable="true">
+				                        <el-option></el-option>
+				                    </el-select>
+					            </el-col>
+					            <el-col :lg="5" :sm="11" class="offcn_operation" :offset="1">
+					                <el-cascader :options="options" placeholder ="地区"> </el-cascader>
+					            </el-col>
+					        </el-row>
+					        <el-row class="clearfix">
+					            <el-col :span="24">
+					                <el-col :span="1">&nbsp;</el-col>
+					                <el-col :span="23">
+					                    <el-button type="primary">搜索</el-button>
+										<el-button type="success">导出</el-button>
+										<el-button type="info">重置</el-button>
+					                </el-col>
+					            </el-col>
+					        </el-row>
+					        <el-input type="textarea" v-model="twostep" class="mt20 mb20" rows="8"></el-input>
+						</el-col>
+						<!--==tab导航栏==-->
+						<el-col :span="24">
+							<el-input type="textarea" v-model="threestep" class="mt20 mb20" rows="8"></el-input>
+						</el-col>
+						<!--==tab切换栏==-->
+						<el-col :span="24">
+							<el-input type="textarea" v-model="fourstep" class="mt20 mb20" rows="8"></el-input>
 						</el-col>
 			  		</div>
 			  	</el-main>
@@ -181,7 +235,12 @@
       data: function() {
         return {
 			listStatus:"0",
-			activeindex:"0"
+			activeindex:"0",
+			radio1:"上海",
+			onestep:'<el-row ><el-col :lg="8" :sm="11"><el-col :span="8" class="offcn_seachname offcn_alignR">班级编码</el-col><el-col :span="16" class="offcn_operation"><el-input clearable></el-input></el-col></el-col><el-col :lg="8" :sm="11"><el-col :span="8" class="offcn_seachname offcn_alignR">班级名称</el-col><el-col :span="16" class="offcn_operation"><el-input clearable></el-input></el-col></el-col><el-col :lg="8" :sm="11"><el-col :span="8" class="offcn_seachname offcn_alignR">上课日期</el-col><el-col :span="16" class="offcn_operation"><el-date-picker type="daterange" range-separator="至" value-format = "timestamp" ></el-date-picker></el-col></el-col><el-col :lg="8" :sm="11"><el-col :span="8" class="offcn_seachname offcn_alignR">考试类型</el-col><el-col :span="16" class="offcn_operation"><el-select placeholder="请选择" popper-class="search-select" clearable="true" filterable="true"><el-option></el-option></el-select></el-col></el-col><el-col :lg="8" :sm="11"><el-col :span="8" class="offcn_seachname offcn_alignR">考试类型</el-col><el-col :span="16" class="offcn_operation"><el-select placeholder="请选择" popper-class="search-select" clearable="true" filterable="true"><el-option></el-option></el-select></el-col></el-col><el-col :lg="8" :sm="11"><el-col :span="8" class="offcn_seachname offcn_alignR">考试类型</el-col><el-col :span="16" class="offcn_operation"><el-cascader :options="options"></el-cascader></el-col></el-col></el-row><el-row class="clearfix"><el-col :lg="21" :md="22" :sm="23"><el-col :lg="3" :md="4" :sm="4">&nbsp;</el-col><el-col :lg="21" :md="20" :sm="19"><el-button type="primary">搜索</el-button><el-button type="success">导出</el-button><el-button type="info">重置</el-button></el-col></el-col></el-row>',
+			twostep:'<el-row ><el-col :lg="5" :sm="11" class="offcn_operation" :offset="1"><el-input clearable placeholder ="班级编码"></el-input></el-col><el-col :lg="5" :sm="11" class="offcn_operation" :offset="1"><el-input clearable placeholder ="班级名称"></el-input></el-col><el-col :lg="5" :sm="11" class="offcn_operation" :offset="1"><el-select placeholder="考试类型" popper-class="search-select" clearable="true" filterable="true"><el-option></el-option></el-select></el-col><el-col :lg="5" :sm="11" class="offcn_operation" :offset="1"><el-select placeholder="考试类型" popper-class="search-select" clearable="true" filterable="true"><el-option></el-option></el-select></el-col><el-col :lg="5" :sm="11" class="offcn_operation" :offset="1"><el-cascader :options="options" placeholder ="地区"></el-cascader></el-col></el-row><el-row class="clearfix"><el-col :span="24"><el-col :span="1">&nbsp;</el-col><el-col :span="23"><el-button type="primary">搜索</el-button><el-button type="success">导出</el-button><el-button type="info">重置</el-button></el-col></el-col></el-row>',
+			threestep:'<div class="offcn_headtab"><el-tabs v-model="listStatus"><el-tab-pane label="导航一" name="0"></el-tab-pane><el-tab-pane label="导航二" name="1"></el-tab-pane><el-tab-pane label="导航三" name="2"></el-tab-pane></el-tabs></div>',
+			fourstep:'<div><el-radio-group v-model="radio1"><el-radio-button label="上海"></el-radio-button><el-radio-button label="北京"></el-radio-button><el-radio-button label="广州"></el-radio-button><el-radio-button label="深圳"></el-radio-button></el-radio-group></div>'
          }
       },
       mounted () {
@@ -195,7 +254,7 @@
       		});
       		this.activeindex = index
 			Boxlist[index].style.display="block"
-      	}
+      	},
       }
     })
   </script>
