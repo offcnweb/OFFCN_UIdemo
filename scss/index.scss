@@ -1,0 +1,37 @@
+@charset "utf-8";
+html{color:#000;background:#F2F3F8;height:100%;}
+body{font:13px/24px "Microsoft YaHei",Tahoma,Arial,Helvetica,sans-serif;word-break:break-all;word-wrap:break-word;color:#333;height:100%;}
+body,h1,h2,h3,h4,h5,h6,p,dl,dd{margin:0;}ul,ol,input{margin:0;padding:0;}li{list-style: none;}
+img{border:none;vertical-align:middle;}table{border-collapse:collapse;border-spacing:0;}
+textarea{resize:none;outline:none;}button,input,textarea{outline:none;/*background: none; border:none;*/font-family:"Microsoft YaHei",Tahoma,Arial,Helvetica,sans-serif;vertical-align:middle;}/*input:focus{outline: none;}*/
+input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none;}
+textarea {  -webkit-appearance: none;}   
+a{text-decoration:none;color: #333;}
+a:hover{text-decoration:inline;color: #2693e0;}
+.el-container,.el-menu,#app{height:100%;}
+@import "../mixin/_Mixins.scss";
+@import "../scss/fontbase.scss";
+
+
+@mixin seachstyle(){line-height: 40px;height: 58px;color: #666;};
+.offcn_seachname,.offcn_operation{
+	@include seachstyle();
+}
+.offcn_seachname{padding-right:20px;}
+.offcn_operation {
+	&>.el-select,.el-date-editor,.el-cascader{width:100%;}
+	}
+.offcn_headtab{
+	background:#fff;position:relative;left:-20px;width:calc(100% + 20px);padding-left:20px;height:55px;
+    top:-19px;
+  
+    .el-tabs__nav{height:55px!important;}
+    .el-tabs__header{margin:0; height:100%;}
+    .el-tabs__nav-wrap::after{background-color:#fff!important;}
+    .el-tabs__item{height:55px;line-height:55px;}
+    .el-tabs__item.is-active{font-weight:bold;}
+}
+
+
+/* 修改了原有的样式 */
+.el-button--primary.is-plain{background:#fff;border-color:#4C9CFA;}	
